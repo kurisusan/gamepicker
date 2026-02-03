@@ -17,8 +17,8 @@ async function main() {
   const llmProvider: LlmProvider = new OllamaProvider();
   const recommendation = await llmProvider.getRecommendation(mood, games);
 
-  console.log(`\nBased on your mood: "${mood}"`);
-  console.log("\nHere is my recommendation:\n");
+  console.log(`\nUser: "${mood}"`);
+  console.log("Recommendation:");
   console.log(recommendation);
 }
 

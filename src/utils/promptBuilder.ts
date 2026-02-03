@@ -18,5 +18,6 @@ My mood: "${mood}"
 My games:
 ${gameList}
 
-Please provide a list of 3 games recommendation by priority (from most recommended to least) and a brief explanation of why you recommend it.`;
+Please provide a list of 3 games recommendation by priority (from most recommended to least) and a brief explanation of why you recommend it.
+Please detect the language of the mood and answer in the same language.`;
 }

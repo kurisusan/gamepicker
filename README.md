@@ -1,27 +1,15 @@
 # Game Helper
 
-This project provides a simple Bun TypeScript script to fetch a user's game list from the Steam API and get game recommendations from an LLM based on your mood. It's designed to be run in a containerized environment using Docker for isolation and reproducibility, or directly using Bun.
-
-## Features
-
-- Fetches owned games from the Steam Web API.
-- Caches the game list to avoid repeated API calls.
-- Integrates with Ollama to provide game recommendations based on your mood.
-- Mood can be passed as a command-line argument for dynamic recommendations.
-- Extensible design to support other game platforms and LLM providers.
-- Includes a Dockerfile for easy containerization.
+This project provides a simple Bun TypeScript script to fetch a user's game list from the Steam API and get game recommendations from an LLM based on your mood.
 
 ## Prerequisites
 
 To run this project, you will need:
 
-- **Bun**: If you plan to run the script directly (not via Docker).
-- **Docker**: If you plan to run the script in a container.
+- **Bun**: If you plan to run the script directly.
 - **Ollama**: To use the game recommendation feature. You can download it from [https://ollama.ai/](https://ollama.ai/).
 
 ## Setup and Running
-
-Follow these steps to get the project set up and running:
 
 ### 1. Obtain Steam API Key and User ID
 
@@ -58,7 +46,7 @@ To get game recommendations, you need to have Ollama running on your local machi
 
 ### 3. Create a `.env` file
 
-In the root directory of this project (where `package.json` and `Dockerfile` are located), create a file named `.env`.
+In the root directory of this project (where `package.json` is located), create a file named `.env`.
 
 Add the following lines to it, replacing the placeholders with your actual API key and Steam User ID:
 
@@ -77,24 +65,6 @@ OLLAMA_URL=http://your-ollama-host:11434
 
 ### 4. Running the Script
 
-You have two options for running the script: using Docker or directly with Bun.
-
-#### Option 1: Using Docker (Recommended)
-
-1.  **Build the Docker image:**
-    ```bash
-    docker build -t game-helper .
-    ```
-2.  **Run the Docker container:**
-    *   Make sure your `.env` file is in the project root.
-    *   Run the container, mounting the `.env` file into the container:
-        ```bash
-        docker run --rm -it --env-file ./.env --network=host game-helper
-        ```
-    *   `--network=host` is required to allow the Docker container to access the Ollama service running on your host machine.
-
-#### Option 2: Running directly with Bun
-
 1.  **Install dependencies:**
     ```bash
     bun install
@@ -103,7 +73,7 @@ You have two options for running the script: using Docker or directly with Bun.
     *   Ensure your `.env` file is in the project root.
     *   To get a recommendation based on a specific mood:
         ```bash
-        bun start "Tired, but need for calm stimulation, unrealistic game"
+        bun recommend "Tired, but need for calm stimulation, unrealistic game"
         ```
 
 ## Example Output

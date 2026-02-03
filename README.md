@@ -7,6 +7,7 @@ This project provides a simple Bun TypeScript script to fetch a user's game list
 - Fetches owned games from the Steam Web API.
 - Caches the game list to avoid repeated API calls.
 - Integrates with Ollama to provide game recommendations based on your mood.
+- Mood can be passed as a command-line argument for dynamic recommendations.
 - Extensible design to support other game platforms and LLM providers.
 - Includes a Dockerfile for easy containerization.
 
@@ -98,22 +99,19 @@ You have two options for running the script: using Docker or directly with Bun.
     ```bash
     bun install
     ```
-2.  **Build the project:**
-    ```bash
-    bun run build
-    ```
-3.  **Run the script:**
+2.  **Run the script with a mood:**
     *   Ensure your `.env` file is in the project root.
-    ```bash
-    bun run start
-    ```
+    *   To get a recommendation based on a specific mood:
+        ```bash
+        bun start "Tired, but need for calm stimulation, unrealistic game"
+        ```
 
 ## Example Output
 
 Here is an example of the kind of output you can expect from the script:
 
 ```
-Based on your mood: "Tired, but need for calm stimulation, not realistic game"
+Based on your mood: "Tired, but need for calm stimulation, unrealistic game"
 
 Here is my recommendation:
 

@@ -11,7 +11,8 @@ async function main() {
     return;
   }
 
-  const mood = "Tired, but need for calm stimulation, not realistic game";
+  // Read mood from command line arguments, or use a default
+  const mood = process.argv[2] || "Happy";
 
   const llmProvider: LlmProvider = new OllamaProvider();
   const recommendation = await llmProvider.getRecommendation(mood, games);

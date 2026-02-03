@@ -4,7 +4,7 @@ import type {
   SteamAPIResponse,
   SteamGame,
 } from "../interfaces";
-import { readCache, writeCache } from "../cache";
+import { CacheManager } from "../cache";
 
 const STEAM_API_KEY = process.env.STEAM_API_KEY;
 const STEAM_USER_ID = process.env.STEAM_USER_ID;
@@ -22,7 +22,7 @@ export class SteamPlatform implements GamePlatform {
   private platformId = "steam";
   private steamApiUrl: string;
 
-  constructor() {
+  constructor(private cacheManager: CacheManager) {
     const params = new URLSearchParams({
       key: STEAM_API_KEY as string,
       steamid: STEAM_USER_ID as string,
@@ -34,7 +34,7 @@ export class SteamPlatform implements GamePlatform {
   }
 
   async getGames(): Promise<Game[]> {
-    const cachedGames = await readCache(this.platformId);
+    const cachedGames = await this.cacheManager.readCache(this.platformId);
     if (cachedGames) {
       console.log("Serving from cache");
       return cachedGames;
@@ -51,7 +51,7 @@ export class SteamPlatform implements GamePlatform {
         lastPlayed: game.rtime_last_played,
       }));
 
-      await writeCache(this.platformId, games);
+      await this.cacheManager.writeCache(this.platformId, games);
       return games;
     } catch (error) {
       console.error("Error fetching Steam games:", error);

@@ -33,3 +33,7 @@ cache/
 
 # Finder (MacOS) folder config
 .DS_Store
+
+## build artifacts
+dist
+build

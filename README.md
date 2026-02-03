@@ -1,4 +1,4 @@
-# Game Helper
+# Game Picker
 
 This project provides a simple Bun TypeScript script to fetch a user's game list from the Steam API and get game recommendations from an LLM based on your mood.
 
@@ -73,7 +73,7 @@ OLLAMA_URL=http://your-ollama-host:11434
     *   Ensure your `.env` file is in the project root.
     *   To get a recommendation based on a specific mood:
         ```bash
-        bun recommend "Tired, but need for calm stimulation, unrealistic game"
+        bun cli "Tired, but need for calm stimulation, unrealistic game"
         ```
 
 ## Example Output

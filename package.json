@@ -4,13 +4,23 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "bun run src/index.ts",
-    "build": "bun build ./src/index.ts --outdir ./dist"
+    "start": "bun run build:electro && electrobun dev",
+    "cli": "bun run src/app/cli.ts",
+    "build:app": "bun build ./src/app/index.ts ./src/app/cli.ts --outdir ./dist",
+    "build:electro": "electrobun build",
+    "build": "bun run build:electro --env=stable --targets=all && bun run build:app"
   },
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "dependencies": {
+    "@types/react": "^19.2.10",
+    "@types/react-dom": "^19.2.3",
+    "electrobun": "^0.8.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   }
 }

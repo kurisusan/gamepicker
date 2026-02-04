@@ -1,7 +1,7 @@
 import { GameHelperApp } from "./app";
 
 async function main() {
-  const app = new GameHelperApp();
+  const app = new GameHelperApp("./cache");
 
   // Read mood from command line arguments, or use a default
   const mood = process.argv[2] || "Happy";
